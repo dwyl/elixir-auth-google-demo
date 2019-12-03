@@ -3,11 +3,23 @@
 A basic example of using Google Auth in a Phoenix App.
 
 
+# What?
+
+This project is intended as a _barebones_ demonstration
+of using
+[`elixir-auth-google`](https://github.com/dwyl/elixir-auth-google)
+to add support for "Sign-in with Google" to your Phoenix Application.
+
+
 # How?
 
+
+Create a new project if you don't already have one:
 ```
 mix phx.new app
 ```
+
+
 
 
 

@@ -18,6 +18,15 @@ Create a new project if you don't already have one:
 ```
 mix phx.new app
 ```
+If prompted to install dependencies `Fetch and install dependencies? [Yn]`
+Type `y` and hit the `[Enter]` key to install.
+
+You should see something like this:
+```
+* running mix deps.get
+* running cd assets && npm install && node node_modules/webpack/bin/webpack.js
+* running mix deps.compile
+```
 
 
 

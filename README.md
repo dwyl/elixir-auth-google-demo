@@ -106,10 +106,10 @@ Run the **`mix deps.get`** command to download.
 
 Create your Google App and download the API keys
 by follow the instructions in:
-[``/create-google-app-guide.md`](https://github.com/dwyl/elixir-auth-google/blob/master/create-google-app-guide.md)
+[`/create-google-app-guide.md`](https://github.com/dwyl/elixir-auth-google/blob/master/create-google-app-guide.md)
 
 By the end of this step
-you should have these two environment variables set:
+you should have these two environment variables defined:
 
 ```yml
 GOOGLE_CLIENT_ID=631770888008-6n0oruvsm16kbkqg6u76p5cv5kfkcekt.apps.googleusercontent.com
@@ -121,12 +121,47 @@ They are just here for illustration purposes.
 
 
 
-3. Create a `GoogleAuthController` in your Project
+## 3. Create a `GoogleAuthController` in your Project
 
-https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Html.html
+In order to process and _display_ the data returned by the Google OAuth2 API,
+we need a `controller`, `view` and `template`.
+
+mix phx.gen.html Auth User users given_name:binary email:binary picture:binary --no-context
 
 
---no-context
+> It's faster to use generator commands
+and _discard_ what we _don't_ need.
+For detail, see: <br />
++ https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Html.html
++ https://hexdocs.pm/phoenix/phoenix_mix_tasks.html#mix-phx-gen-html
+> If you prefer to create the files _manually_ that's fine,
+> just remember that you will end up having to remember/write
+the boilerplate code to setup each file and name them correctly.
+
+
+The _reason_ we are using `mix phx.gen.html`
+which also creates a schema+migration
+is to store the `profile` data returned by the Google API
+so that we can display some of it in the UI while the person is logged in.
+
+The API returns data in the following form:
+```elixir
+%{
+  "email" => "nelson@gmail.com",
+  "email_verified" => true,
+  "family_name" => "Correia",
+  "given_name" => "Nelson",
+  "locale" => "en",
+  "name" => "Nelson Correia",
+  "picture" => "https://lh3.googleusercontent.com/a-/AAuE7mApnYb260YC1JY7aPUBxwk8iNzVKB5Q3x_8d3-ThA",
+  "sub" => "940732358705212133793"
+}
+```
+We are only storing the bare minimum of data; what we want to display in the UI.
+
+
+
+
 
 
 To start your Phoenix server:

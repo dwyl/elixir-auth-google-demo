@@ -23,12 +23,15 @@ to add support for "***Sign-in with Google***" to your Phoenix Application.
 
 # _Who_? 👥
 
-
+This demos is intended for people of all Elixir/Phoenix skill levels.
+Anyone who wants the "***Sign-in with Google***" functionality
+without the extra steps to configure a whole auth _framework_.
 
 
 # _How?_ 💻
 
 
+1. Create a New Phoenix App
 
 Create a new project if you don't already have one:
 
@@ -46,9 +49,31 @@ You should see something like this:
 * running mix deps.compile
 ```
 
+Make sure that everything works before proceeding:
+```
+mix test
+```
+You should see:
+```
+Generated app app
+...
+
+Finished in 0.02 seconds
+3 tests, 0 failures
+```
+The default tests pass and you know phoenix is compiling.
+
+Run the web application:
+
+```
+mix phx.server
+```
+
+and visit the endpoint in your web browser: http://localhost:4000/
+![phoenix-default-home](https://user-images.githubusercontent.com/194400/70126043-0d174b00-1670-11ea-856e-b31e593b5844.png)
 
 
-
+2.
 
 --no-context
 

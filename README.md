@@ -119,12 +119,12 @@ GOOGLE_CLIENT_SECRET=MHxv6-RGF5nheXnxh1b0LNDq
 > ⚠️ Don't worry, these keys aren't valid.
 They are just here for illustration purposes.
 
-## 3. Create 2 New Files
+## 3. Create 2 New Files  ➕
 
 We need to create two files in order to handle the requests
 to the Google Auth API and display data to people using our app.
 
-### 3.1 Create a `GoogleAuthController` in your Project ➕
+### 3.1 Create a `GoogleAuthController` in your Project
 
 In order to process and _display_ the data returned by the Google OAuth2 API,
 we need to create a new `controller`.
@@ -157,7 +157,10 @@ after the person authenticates.
 + Render a `:welcome` view displaying some profile data
 to confirm that login with Google was successful.
 
-> Note:
+> Note: we are placing the `welcome.html.eex` template
+in the `template/page` directory to save having to create
+any more directories and view files.
+You are free to organise your code however you prefer.
 
 ### 3.2 Create `welcome` template 📝
 
@@ -175,7 +178,6 @@ And type (_or paste_) the following code in it:
     <strong style="color:teal;"><%= @profile.email %></strong>
   <p/>
 </section>
-
 ```
 
 
@@ -193,6 +195,9 @@ returns profile data in the following format:
   sub: "940732358705212133793"
 }
 ```
+You can use this data however you see fit.
+(_obviously treat it with respect, only store what you need and keep it secure_)
+
 
 ## 4. Add the `/auth/google/callback` to `router.ex`
 

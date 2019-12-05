@@ -134,7 +134,9 @@ and _discard_ what we _don't_ need.
 For detail, see: <br />
 + https://hexdocs.pm/phoenix/Mix.Tasks.Phx.Gen.Html.html
 + https://hexdocs.pm/phoenix/phoenix_mix_tasks.html#mix-phx-gen-html
-> If you prefer to create the files _manually_ that's fine,
+> If you prefer to create the files _manually_ -
+e.g: because you already have a "Users" table in your existing app -
+> that's fine,
 > just remember that you will end up having to remember/write
 the boilerplate code to setup each file and name them correctly.
 

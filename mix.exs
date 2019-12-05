@@ -43,7 +43,7 @@ defmodule App.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:elixir_auth_google, "~> 0.1.0"}
+      {:elixir_auth_google, "~> 0.2.0"}
 
     ]
   end

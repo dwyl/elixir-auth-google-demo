@@ -6,9 +6,9 @@ otp_release:
 env:
   MIX_ENV=test
 script:
-  - mix coveralls.json
-after_success:
-  - bash <(curl -s https://codecov.io/bash) # send coverage report
+  - mix test
+# after_success:
+#   - bash <(curl -s https://codecov.io/bash) # send coverage report
 cache:
   directories:
     - _build

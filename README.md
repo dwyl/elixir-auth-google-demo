@@ -1,4 +1,4 @@
-# auth-demo
+# `elixir-auth-google` _demo_
 
 A basic example of using Google Auth in a Phoenix App.
 

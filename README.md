@@ -2,7 +2,7 @@
 
 A basic example of using Google Auth in a Phoenix App.
 
-![Build Status](https://img.shields.io/travis/com/dwyl/elixir-auth-google-demo/master?color=bright-green&style=flat-square)
+[![Build Status](https://img.shields.io/travis/com/dwyl/elixir-auth-google-demo/master?color=bright-green&style=flat-square)](https://travis-ci.com/github/dwyl/elixir-auth-google-demo)
 [![codecov.io](https://img.shields.io/codecov/c/github/dwyl/elixir-auth-google/master.svg?style=flat-square)](http://codecov.io/github/dwyl/elixir-auth-google?branch=master)
 ![Hex.pm](https://img.shields.io/hexpm/v/elixir_auth_google?color=brightgreen&style=flat-square)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/elixir-auth-google/issues)
@@ -49,8 +49,11 @@ you can **skip this step**. <br />
 Just make sure your app is in a known working state before proceeding_.
 
 ```
-mix phx.new app
+mix phx.new app --no-ecto --no-webpack
 ```
+> We don't need a database or static asset compilation for this demo.
+> But we know they work fine
+because we are using this package in our App in production.
 
 If prompted to install dependencies `Fetch and install dependencies? [Yn]`
 Type `y` and hit the `[Enter]` key to install.

@@ -8,8 +8,6 @@ defmodule App.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      # Start the Ecto repository
-      App.Repo,
       # Start the endpoint when the application starts
       AppWeb.Endpoint
       # Starts a worker by calling: App.Worker.start_link(arg)

@@ -1,6 +1,15 @@
 defmodule AppWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :app
 
+  # The session will be stored in the cookie and signed,
+  # this means its contents can be read but not tampered with.
+  # Set :encryption_salt if you would also like to encrypt it.
+  @session_options [
+    store: :cookie,
+    key: "_app_key",
+    signing_salt: "G6R+NSYj"
+  ]
+
   socket "/socket", AppWeb.UserSocket,
     websocket: true,
     longpoll: false
@@ -33,14 +42,6 @@ defmodule AppWeb.Endpoint do
 
   plug Plug.MethodOverride
   plug Plug.Head
-
-  # The session will be stored in the cookie and signed,
-  # this means its contents can be read but not tampered with.
-  # Set :encryption_salt if you would also like to encrypt it.
-  plug Plug.Session,
-    store: :cookie,
-    key: "_app_key",
-    signing_salt: "T1AcW/ep"
-
+  plug Plug.Session, @session_options
   plug AppWeb.Router
 end

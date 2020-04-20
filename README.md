@@ -7,6 +7,8 @@ A basic example of using Google Auth in a Phoenix App.
 ![Hex.pm](https://img.shields.io/hexpm/v/elixir_auth_google?color=brightgreen&style=flat-square)
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/elixir-auth-google/issues)
 
+> Try it: https://elixir-auth-google-demo.herokuapp.com
+
 
 # _Why_? 🤷
 

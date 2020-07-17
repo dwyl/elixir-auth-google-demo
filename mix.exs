@@ -42,7 +42,7 @@ defmodule App.MixProject do
       {:plug_cowboy, "~> 2.3.0"},
 
       # https://github.com/dwyl/elixir-auth-google
-      {:elixir_auth_google, "~> 1.2.0"}
+      {:elixir_auth_google, "~> 1.3.0"}
     ]
   end
 

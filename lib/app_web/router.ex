@@ -11,12 +11,15 @@ defmodule AppWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    post("/auth/one_tap", AppWeb.OneTapController, :handle)
   end
 
   scope "/", AppWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/welcome", WelcomeController, :index
     get "/auth/google/callback", GoogleAuthController, :index
   end
 

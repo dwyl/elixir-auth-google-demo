@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
@@ -13,7 +13,8 @@ config :app, AppWeb.Endpoint,
   http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "elixir-auth-google-demo.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]]
-  # cache_static_manifest: "priv/static/cache_manifest.json"
+
+# cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
 config :logger, level: :info

@@ -4,10 +4,10 @@ defmodule App.MixProject do
   def project do
     [
       app: :app,
-      version: "1.5.0",
-      elixir: "~> 1.12.3",
+      version: "1.5.1",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps()
@@ -33,7 +33,7 @@ defmodule App.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.6.0"},
+      {:phoenix, "~> 1.6.11"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
       {:postgrex, ">= 0.0.0"},
@@ -42,13 +42,15 @@ defmodule App.MixProject do
       {:phoenix_live_view, "~> 0.16.4"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.5"},
-      {:esbuild, "~> 0.2", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:swoosh, "~> 1.3"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
-      {:jason, "~> 1.2"},
+      {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.5"},
+      {:httpoison, "~> 1.8"},
+      {:joken, "~> 2.5"},
 
       # https://github.com/dwyl/elixir-auth-google
       {:elixir_auth_google, "~> 1.5.0"}

@@ -5,7 +5,12 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Config
+
+config :elixir_auth_google,
+  google_client_id: System.get_env("GOOGLE_CLIENT_ID"),
+  google_client_secret: System.get_env("GOOGLE_CLIENT_SECRET"),
+  google_scope: "profile email"
 
 # Configures the endpoint
 config :app, AppWeb.Endpoint,
@@ -30,9 +35,9 @@ import_config "#{Mix.env()}.exs"
 # https://gist.github.com/chrismccord/2ab350f154235ad4a4d0f4de6decba7b
 # Configure esbuild (the version is required)
 config :esbuild,
-  version: "0.12.18",
+  version: "0.14.29",
   default: [
-    args: ~w(js/app.js --bundle --target=es2016 --outdir=../priv/static/assets),
+    args: ~w(js/app.js --bundle --target=es2020 --outdir=../priv/static/assets),
     cd: Path.expand("../assets", __DIR__),
     env: %{"NODE_PATH" => Path.expand("../deps", __DIR__)}
   ]

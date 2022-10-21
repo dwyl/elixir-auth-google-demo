@@ -26,3 +26,23 @@
   </div>
 
 </section>
+<br/>
+<section class="phx-hero">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+<div id="g_id_onload"
+  data-client_id={System.get_env("GOOGLE_CLIENT_ID")}
+  data-login_uri="http://localhost:4000/auth/one_tap"
+  data-auto_prompt="true"
+  >
+</div>
+<div class="g_id_signin"
+  data-type="standard"
+  data-size="large"
+  data-theme="outline"
+  data-text="sign_in_with"
+  data-shape="pill"
+  data-logo_alignment="left"
+  data-width="400"
+  style="margin-left: 130px">
+</div> 
+</section>

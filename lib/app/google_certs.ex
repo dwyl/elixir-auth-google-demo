@@ -35,19 +35,21 @@ defmodule App.GoogleCerts do
   # We retrieve Google's public certs JWK format
   # to check the signature of the received token
   defp check_identity(jwt) do
-    with {:ok, %{"kid" => kid, "alg" => alg}} <- Joken.peek_header(jwt) do
-      %{"keys" => certs} =
-        @g_certs3_url
-        |> HTTPoison.get!()
-        |> Map.get(:body)
-        |> Jason.decode!()
+    case Joken.peek_header(jwt) do
+      {:error, msg} ->
+        {:error, msg}
 
-      cert = Enum.find(certs, fn cert -> cert["kid"] == kid end)
-      signer = Joken.Signer.create(alg, cert)
+      {:ok, %{"kid" => kid, "alg" => alg}} ->
+        %{"keys" => certs} =
+          @g_certs3_url
+          |> HTTPoison.get!()
+          |> Map.get(:body)
+          |> Jason.decode!()
 
-      Joken.verify(jwt, signer, [])
-    else
-      {:error, msg} -> {:error, msg}
+        cert = Enum.find(certs, fn cert -> cert["kid"] == kid end)
+        signer = Joken.Signer.create(alg, cert)
+
+        Joken.verify(jwt, signer, [])
     end
   end
 

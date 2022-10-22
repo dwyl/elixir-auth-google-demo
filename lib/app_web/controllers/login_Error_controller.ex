@@ -1,6 +1,9 @@
 defmodule AppWeb.LoginError do
   use Phoenix.Controller
 
+  @moduledoc """
+  Fallback for GoogleAuthCtrl and OneTapCtrl errors, returns to "/" and display flash error
+  """
   def call(conn, {:error, message}) do
     conn
     |> fetch_session()
@@ -11,3 +14,5 @@ defmodule AppWeb.LoginError do
     |> halt()
   end
 end
+
+# nb: first call fetch_session, then fetch_flash, in THIS order

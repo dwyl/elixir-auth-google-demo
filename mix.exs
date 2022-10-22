@@ -5,7 +5,7 @@ defmodule App.MixProject do
     [
       app: :app,
       version: "1.5.1",
-      elixir: "~> 1.12",
+      elixir: "~> 1.12.3",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -51,6 +51,7 @@ defmodule App.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:httpoison, "~> 1.8"},
       {:joken, "~> 2.5"},
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
 
       # https://github.com/dwyl/elixir-auth-google
       {:elixir_auth_google, "~> 1.5.0"}

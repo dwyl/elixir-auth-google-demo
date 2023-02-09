@@ -389,3 +389,7 @@ if you need an example.
 [elixir-google-auth-demo.fly.dev](https://elixir-google-auth-demo.fly.dev/)
 
 ![elixir-google-auth-demo.fly.dev](https://user-images.githubusercontent.com/194400/217935199-2aa46e54-6977-4333-a3ac-22feab777004.png "works flawlessly")
+
+Recommended reading: 
+"Deploying with Releases"
+[hexdocs.pm/phoenix/releases.html](https://hexdocs.pm/phoenix/releases.html)

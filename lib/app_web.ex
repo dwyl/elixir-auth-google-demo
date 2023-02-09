@@ -22,7 +22,6 @@ defmodule AppWeb do
       use Phoenix.Controller, namespace: AppWeb
 
       import Plug.Conn
-      import AppWeb.Gettext
       alias AppWeb.Router.Helpers, as: Routes
     end
   end
@@ -40,7 +39,6 @@ defmodule AppWeb do
       use Phoenix.HTML
 
       import AppWeb.ErrorHelpers
-      import AppWeb.Gettext
       alias AppWeb.Router.Helpers, as: Routes
     end
   end
@@ -56,7 +54,6 @@ defmodule AppWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import AppWeb.Gettext
     end
   end
 

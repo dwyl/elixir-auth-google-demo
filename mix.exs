@@ -10,7 +10,16 @@ defmodule App.MixProject do
       compilers: [:phoenix] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        c: :test,
+        coveralls: :test,
+        "coveralls.json": :test,
+        "coveralls.html": :test,
+        t: :test,
+        test: :test
+      ]
     ]
   end
 
@@ -46,7 +55,10 @@ defmodule App.MixProject do
       {:plug_cowboy, "~> 2.5"},
 
       # https://github.com/dwyl/elixir-auth-google
-      {:elixir_auth_google, "~> 1.6.5"}
+      {:elixir_auth_google, "~> 1.6.5"},
+
+      # Track test coverage: github.com/parroty/excoveralls
+      {:excoveralls, "~> 0.15", only: [:test, :dev]}
     ]
   end
 
@@ -59,7 +71,8 @@ defmodule App.MixProject do
   defp aliases do
     [
       test: ["test"],
-      "assets.deploy": ["phx.digest"]
+      "assets.deploy": ["phx.digest"],
+      c: ["coveralls.html"]
     ]
   end
 end

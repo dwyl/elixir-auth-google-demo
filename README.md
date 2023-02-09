@@ -1,3 +1,5 @@
+<div align="center">
+
 # `elixir-auth-google` _demo_
 
 A basic example of using Google Auth in a Phoenix App.
@@ -10,6 +12,7 @@ A basic example of using Google Auth in a Phoenix App.
 
 > Try it: https://elixir-google-auth-demo.fly.dev
 
+</div>
 
 # _Why_? 🤷
 
@@ -352,3 +355,37 @@ And with that, we're done with the demo. ✅
 If you still have questions,
 please open an issue: 
 [dwyl/elixir-auth-google/**issues**](https://github.com/dwyl/elixir-auth-google/issues)
+
+## Deployment to `Fly.io`
+
+Deploying this demo app to `Fly.io`
+is _very_ easy. 
+Simply follow the official `Elixir` Getting Started guide:
+[fly.io/docs/elixir/getting-started](https://fly.io/docs/elixir/getting-started/)
+
+```sh
+fly launch
+```
+
+Speed through the prompts to create the App
+and then add the add the 3 required environment variables:
+
+```sh
+fly secrets set GOOGLE_CLIENT_ID=868803175225-65qvrdfvi053p227mt.apps.googleusercontent.com
+fly secrets set GOOGLE_CLIENT_SECRET=GOCSPX-QoIsUcqQ1dYN5XhHCe
+fly secrets set SECRET_KEY_BASE=q1qDhNOFQk45a1Fb/eaSyWb77sd2a8jQ109oAwLkje7GDOBTBf53lgoSKHzAsEc1
+```
+
+> **Note**: _none_ of these keys are valid. 
+> They are just for illustration purposes.
+
+Refer to the
+`Dockerfile` 
+and
+`fly.toml`
+in this demo project
+if you need an example.
+
+[elixir-google-auth-demo.fly.dev](https://elixir-google-auth-demo.fly.dev/)
+
+![elixir-google-auth-demo.fly.dev](https://user-images.githubusercontent.com/194400/217935199-2aa46e54-6977-4333-a3ac-22feab777004.png "works flawlessly")

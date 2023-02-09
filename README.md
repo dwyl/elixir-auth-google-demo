@@ -396,3 +396,7 @@ if you need an example.
 Recommended reading: 
 "Deploying with Releases"
 [hexdocs.pm/phoenix/releases.html](https://hexdocs.pm/phoenix/releases.html)
+
+For Continuous Deployment to Fly.io,
+read:
+[fly.io/docs/app-guides/continuous-deployment-with-github-actions](https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/)

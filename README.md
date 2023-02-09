@@ -2,10 +2,11 @@
 
 A basic example of using Google Auth in a Phoenix App.
 
-[![Build Status](https://img.shields.io/travis/com/dwyl/elixir-auth-google-demo/master?color=bright-green&style=flat-square)](https://travis-ci.com/github/dwyl/elixir-auth-google-demo)
-[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/elixir-auth-google/master.svg?style=flat-square)](http://codecov.io/github/dwyl/elixir-auth-google?branch=master)
-![Hex.pm](https://img.shields.io/hexpm/v/elixir_auth_google?color=brightgreen&style=flat-square)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/elixir-auth-google/issues)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dwyl/elixir-auth-google-demo/ci.yml?label=build&style=flat-square&branch=main)
+[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/elixir-auth-google-demo/main.svg?style=flat-square)](http://codecov.io/github/dwyl/elixir-auth-google-demo?branch=main)
+[![Hex.pm](https://img.shields.io/hexpm/v/elixir_auth_google?color=brightgreen&style=flat-square)](https://hex.pm/packages/elixir_auth_google)
+[![contributions welcome](https://img.shields.io/badge/feedback-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/app-elixir-auth-google-demo/issues)
+[![HitCount](https://hits.dwyl.com/dwyl/app-elixir-auth-google-demo.svg)](https://hits.dwyl.com/dwyl/app-elixir-auth-google-demo)
 
 > Try it: https://elixir-auth-google-demo.herokuapp.com
 

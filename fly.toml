@@ -1,15 +1,12 @@
-# fly.toml file generated for elxir-google-auth-demo on 2023-02-09T15:09:08Z
+# fly.toml file generated for elixir-google-auth-demo on 2023-02-09T15:30:22Z
 
-app = "elxir-google-auth-demo"
+app = "elixir-google-auth-demo"
 kill_signal = "SIGTERM"
 kill_timeout = 5
 processes = []
 
-[deploy]
-  release_command = "/app/bin/migrate"
-
 [env]
-  PHX_HOST = "elxir-google-auth-demo.fly.dev"
+  PHX_HOST = "elixir-google-auth-demo.fly.dev"
   PORT = "8080"
 
 [experimental]

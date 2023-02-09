@@ -378,6 +378,9 @@ fly secrets set SECRET_KEY_BASE=q1qDhNOFQk45a1Fb/eaSyWb77sd2a8jQ109oAwLkje7GDOBT
 
 > **Note**: _none_ of these keys are valid. 
 > They are just for illustration purposes.
+> Follow the instructions:
+> [dwyl/elixir-auth-google/blob/main/create-google-app-guide.md](https://github.com/dwyl/elixir-auth-google/blob/main/create-google-app-guide.md)
+> to get your Google App keys.
 
 Refer to the
 `Dockerfile` 

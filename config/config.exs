@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-use Mix.Config
+import Mix.Config
 
 # Configures the endpoint
 config :app, AppWeb.Endpoint,
@@ -22,6 +22,9 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :elixir_auth_google,
+  httpoison_mock: false
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

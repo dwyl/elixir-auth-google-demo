@@ -1,14 +1,18 @@
+<div align="center">
+
 # `elixir-auth-google` _demo_
 
 A basic example of using Google Auth in a Phoenix App.
 
-[![Build Status](https://img.shields.io/travis/com/dwyl/elixir-auth-google-demo/master?color=bright-green&style=flat-square)](https://travis-ci.com/github/dwyl/elixir-auth-google-demo)
-[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/elixir-auth-google/master.svg?style=flat-square)](http://codecov.io/github/dwyl/elixir-auth-google?branch=master)
-![Hex.pm](https://img.shields.io/hexpm/v/elixir_auth_google?color=brightgreen&style=flat-square)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/elixir-auth-google/issues)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/dwyl/elixir-auth-google-demo/ci.yml?label=build&style=flat-square&branch=main)
+[![codecov.io](https://img.shields.io/codecov/c/github/dwyl/elixir-auth-google-demo/main.svg?style=flat-square)](http://codecov.io/github/dwyl/elixir-auth-google-demo?branch=main)
+[![Hex.pm](https://img.shields.io/hexpm/v/elixir_auth_google?color=brightgreen&style=flat-square)](https://hex.pm/packages/elixir_auth_google)
+[![contributions welcome](https://img.shields.io/badge/feedback-welcome-brightgreen.svg?style=flat-square)](https://github.com/dwyl/app-elixir-auth-google-demo/issues)
+[![HitCount](https://hits.dwyl.com/dwyl/app-elixir-auth-google-demo.svg)](https://hits.dwyl.com/dwyl/app-elixir-auth-google-demo)
 
-> Try it: https://elixir-auth-google-demo.herokuapp.com
+> Try it: https://elixir-google-auth-demo.fly.dev
 
+</div>
 
 # _Why_? 🤷
 
@@ -34,7 +38,8 @@ without the extra steps to configure a whole auth _framework_.
 
 Following all the steps in this example should take around 10 minutes.
 However if you get stuck, please don't suffer in silence!
-Get help by opening an issue: https://github.com/dwyl/elixir-auth-google/issues
+Get help by opening an issue: 
+https://github.com/dwyl/elixir-auth-google/issues
 
 # _How?_ 💻
 
@@ -51,11 +56,13 @@ you can **skip this step**. <br />
 Just make sure your app is in a known working state before proceeding_.
 
 ```
-mix phx.new app --no-ecto --no-webpack
+mix phx.new app  -no-assets --no-ecto --no-dashboard --no-gettext --no-live --no-mailer
 ```
-> We don't need a database or static asset compilation for this demo.
+> We don't need a static asset compilation, 
+> database, dashboard, translation, `LiveView` or email 
+> for this demo.
 > But we know they work fine
-because we are using this package in our App in production.
+because we are using this package in our `App` in production.
 
 If prompted to install dependencies `Fetch and install dependencies? [Yn]`
 Type `y` and hit the `[Enter]` key to install.
@@ -63,27 +70,29 @@ Type `y` and hit the `[Enter]` key to install.
 You should see something like this:
 ```
 * running mix deps.get
-* running cd assets && npm install && node node_modules/webpack/bin/webpack.js
-* running mix deps.compile
 ```
 
 Make sure that everything works before proceeding:
-```
+
+```sh
 mix test
 ```
+
 You should see:
-```
+
+```sh
 Generated app app
 ...
 
 Finished in 0.02 seconds
 3 tests, 0 failures
 ```
+
 The default tests pass and you know phoenix is compiling.
 
 Run the web application:
 
-```
+```sh
 mix phx.server
 ```
 
@@ -99,7 +108,7 @@ Open your `mix.exs` file and add the following line to your `deps` list:
 ```elixir
 def deps do
   [
-    {:elixir_auth_google, "~> 1.3.0"}
+    {:elixir_auth_google, "~> 1.6.5"}
   ]
 end
 ```
@@ -192,10 +201,10 @@ returns profile data in the following format:
 %{
   email: "nelson@gmail.com",
   email_verified: true,
-  family_name: "Correia",
+  family_name: "Co",
   given_name: "Nelson",
   locale: "en",
-  name: "Nelson Correia",
+  name: "Nelson Co",
   picture: "https://lh3.googleusercontent.com/a-/AAuE7mApnYb260YC1JY7",
   sub: "940732358705212133793"
 }
@@ -268,11 +277,126 @@ they should see the following welcome message:
 
 ![welcome](https://user-images.githubusercontent.com/194400/70201692-494db880-170f-11ea-9776-0ffd1fdf5a72.png)
 
+## Testing
 
+To _test_ the `GoogleAuthController`,
+create a new file with the path:
+`test/app_web/controllers/google_auth_controller_test.exs`
 
-To start your Phoenix server:
+And add the following code:
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `cd assets && npm install`
-  * Start Phoenix endpoint with `mix phx.server`
+```elixir
+defmodule AppWeb.GoogleAuthControllerTest do
+  use AppWeb.ConnCase
+
+  test "google_handler/2 for google auth callback", %{conn: conn} do
+    conn = get(conn, "/auth/google/callback", %{code: "234"})
+    assert html_response(conn, 200) =~ "nelson@gmail.com"
+  end
+end
+```
+
+_Next_, open the 
+`config/test.exs`
+file and add the following lines:
+
+```elixir
+config :elixir_auth_google,
+  client_id: "631770888008-6n0oruvsm16kbkqg6u76p5cv5kfkcekt.apps.googleusercontent.com",
+  client_secret: "MHxv6-RGF5nheXnxh1b0LNDq",
+  httpoison_mock: true
+```
+
+These lines of config ensure that 
+the `HTTPoisonMock` version of `elixir_auth_google`
+will be used when `MIX_ENV=test`.
+So the code will be covered in tests
+but the `HTTP` requests are mocked.
+
+When you run the tests, they should pass:
+```sh
+mix test
+
+....
+Finished in 0.06 seconds (0.03s async, 0.03s sync)
+4 tests, 0 failures
+
+Randomized with seed 847344
+```
+
+And if you run the tests with coverage tracking,
+e.g:
+```sh
+mix c
+```
+
+You should see:
+
+```sh
+Compiling 3 files (.ex)
+Generated app app
+....
+Finished in 0.05 seconds (0.03s async, 0.02s sync)
+4 tests, 0 failures
+
+Randomized with seed 44511
+----------------
+COV    FILE                                        LINES RELEVANT   MISSED
+100.0% lib/app_web/controllers/google_auth_cont       15        3        0
+100.0% lib/app_web/controllers/page_controller.        8        2        0
+100.0% lib/app_web/router.ex                          18        3        0
+100.0% lib/app_web/views/error_view.ex                16        1        0
+[TOTAL] 100.0%
+----------------
+```
+
+And with that, we're done with the demo. ✅
+
+If you still have questions,
+please open an issue: 
+[dwyl/elixir-auth-google/**issues**](https://github.com/dwyl/elixir-auth-google/issues)
+
+## Deployment to `Fly.io`
+
+Deploying this demo app to `Fly.io`
+is _very_ easy. 
+Simply follow the official `Elixir` Getting Started guide:
+[fly.io/docs/elixir/getting-started](https://fly.io/docs/elixir/getting-started/)
+
+```sh
+fly launch
+```
+
+Speed through the prompts to create the App
+and then add the add the 3 required environment variables:
+
+```sh
+fly secrets set GOOGLE_CLIENT_ID=868803175225-65qvrdfvi053p227mt.apps.googleusercontent.com
+fly secrets set GOOGLE_CLIENT_SECRET=GOCSPX-QoIsUcqQ1dYN5XhHCe
+fly secrets set SECRET_KEY_BASE=q1qDhNOFQk45a1Fb/eaSyWb77sd2a8jQ109oAwLkje7GDOBTBf53lgoSKHzAsEc1
+```
+
+> **Note**: _none_ of these keys are valid. 
+> They are just for illustration purposes.
+> Follow the instructions:
+> [dwyl/elixir-auth-google/blob/main/create-google-app-guide.md](https://github.com/dwyl/elixir-auth-google/blob/main/create-google-app-guide.md)
+> to get your Google App keys.
+
+Refer to the
+`Dockerfile` 
+and
+`fly.toml`
+in this demo project
+if you need an example.
+
+[elixir-google-auth-demo.fly.dev](https://elixir-google-auth-demo.fly.dev/)
+
+![elixir-google-auth-demo.fly.dev](https://user-images.githubusercontent.com/194400/217935199-2aa46e54-6977-4333-a3ac-22feab777004.png "works flawlessly")
+
+Recommended reading: 
+"Deploying with Releases"
+[hexdocs.pm/phoenix/releases.html](https://hexdocs.pm/phoenix/releases.html)
+
+For Continuous Deployment to Fly.io,
+read:
+[fly.io/docs/app-guides/continuous-deployment-with-github-actions](https://fly.io/docs/app-guides/continuous-deployment-with-github-actions/)
